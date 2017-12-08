@@ -1,0 +1,14 @@
+description: test network io with iperf
+#resources:
+#  - name: my_resource_def
+#    generator: git:git@gitlab.gwdg.de:scotty/resource/demo.git
+#    params:
+#      user: myuser
+#      passwd: <%= ENV['mysecret'] %>
+workloads:
+  - name: iperf
+    generator: file:.
+    params:
+      greeting: Hallo
+#    resource:
+#      my_resource: my_resource_def

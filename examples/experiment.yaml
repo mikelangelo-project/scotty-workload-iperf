@@ -1,14 +1,15 @@
 description: test network io with iperf
-#resources:
-#  - name: my_resource_def
-#    generator: git:git@gitlab.gwdg.de:scotty/resource/demo.git
-#    params:
-#      user: myuser
-#      passwd: <%= ENV['mysecret'] %>
+resources:
+  - name: iperf-server-client
+    generator: git:git@gitlab.gwdg.de:scotty/resource/iperfserverclient.git
+    params:
+      username: <%= ENV['OS_USERNAME'] %> 
+      password: <%= ENV['OS_PASSWORD'] %>
+      auth_url: <%= ENV['OS_AUTH_URL'] %>
+      project_name: <%= ENV['OS_PROJECT_NAME'] %>
+
 workloads:
   - name: iperf
     generator: file:.
-    params:
-      greeting: Hallo
-#    resource:
-#      my_resource: my_resource_def
+    resources:
+      iperf: iperf-server-client
